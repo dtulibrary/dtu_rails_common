@@ -1,12 +1,12 @@
-<div id="header-navbar-fixed-top" class="navbar navbar-fixed-top">
+<div id="header-navbar-static-top" class="navbar navbar-static-top">
   <div class="navbar-inner level1-navbar">
     <div class="container">
       <div class="row">
-        <div class="span12">
+        <div class="col-md-12">
           <div class="pull-right">
             <%= render :partial=>'/user_util_links' %>
           </div>
-          <a href="http://www.dtu.dk/english"><%= image_tag 'dtu_text_header.png' %></a>
+          <a href="http://www.dtu.dk/english"><%= image_tag 'dtu_rails_common/dtu_text_header.png' %></a>
         </div>
       </div>
     </div>
@@ -15,14 +15,14 @@
     <div class="header-gradient">
       <div class="container">
         <div class="row logos">
-          <div class="span3">
+          <div class="col-md-3">
             <%= content_for :logo %>
           </div>
 
-          <div class="span7">
+          <div class="col-md-7">
             <%= content_for :masthead %>
           </div>
-          <div class="span2">
+          <div class="col-md-2">
             <%= link_to content_tag('div', '', :class => 'dtu-logo').html_safe, 'http://www.dtu.dk/english', :class => 'logo pull-right' %>
           </div>
         </div>
