@@ -7,15 +7,17 @@ require "dtu_rails_common/version"
 Gem::Specification.new do |s|
   s.name        = "dtu_rails_common"
   s.version     = DtuRailsCommon::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of DtuRailsCommon."
-  s.description = "TODO: Description of DtuRailsCommon."
+  s.authors     = ["Franck Falcoz", "Matt Zumwalt", "Steffen Elberg Godskesen"]
+  s.email       = ["frafa@dtic.dtu.dk", "matt.zumwalt@gmail.com", "sego@dtic.dtu.dk"]
+  s.homepage    = "https://github.com/dtulibrary/dtu_rails_common"
+  s.summary     = "Layout, css, and authentication for DTU Library applications"
+  s.description = %q{A rails engine that provides common layout, css, and authentication for DTU Library applications}
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["test/**/*"]
+  s.files         = `git ls-files -z`.split("\x0")
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
+  s.require_paths = ["lib"]
 
   s.add_dependency "rails", "~> 4.1.5"
   s.add_dependency "bootstrap-sass", "~> 3.3.0"

@@ -12,6 +12,9 @@ gemspec
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'rspec-html-matchers'
+  gem 'capybara'
+
   gem 'debugger'
   gem 'engine_cart'
 end
