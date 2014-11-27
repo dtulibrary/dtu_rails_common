@@ -15,7 +15,7 @@ group :development, :test do
   gem 'rspec-html-matchers'
   gem 'capybara'
 
-  gem 'debugger'
+  gem 'byebug'
   gem 'engine_cart'
 end
 

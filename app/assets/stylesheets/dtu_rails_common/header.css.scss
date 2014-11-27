@@ -14,7 +14,7 @@
   }
 
   .level1-navbar {
-    background-color: $dtu_red;
+    background-color: $brand-primary;
     background-image: image-url('dtu_rails_common/header_bg.png');
     filter: none;
     color: #fff;
@@ -68,6 +68,14 @@
         content: '';
       }
     }
+
+    .navbar-right {
+      .navbar-nav > li > a {
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+    }
+
   }
 
   .level2-navbar {
@@ -120,7 +128,7 @@
 
         &:hover, &:active {
           background-image: none;
-          background-color: $dtu_red;
+          background-color: $brand-primary;
           color: #fff;
           i {
             color: #fff;

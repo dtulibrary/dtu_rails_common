@@ -13,7 +13,7 @@
       &:first-child {
         background-image: image_url('dtu_rails_common/service_menu_bg.jpg');
         background-repeat: repeat-x;
-        color: $dtu_red_light;
+        color: $brand-primary-light;
         font-family: "Neo Sans W01 Medium";
         font-weight: normal;
         font-size: 1.1em;
@@ -29,7 +29,7 @@
         background-color: whitesmoke;
 
         a {
-          color: $dtu_red_light;
+          color: $brand-primary-light;
           text-decoration: none;
           background-position: 2px center;
         }

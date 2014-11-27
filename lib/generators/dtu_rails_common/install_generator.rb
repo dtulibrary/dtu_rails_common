@@ -5,15 +5,10 @@ module DtuRailsCommon
 
     source_root File.expand_path('../templates', __FILE__)
 
-    def inject_bootstrap_sass_gem
-      append_to_file 'Gemfile' do
-        "  gem 'bootstrap-sass'"
-      end
+    def assets
+      copy_file "dtu_rails_common.css.scss", "app/assets/stylesheets/dtu_rails_common.css.scss"
+      copy_file "dtu_rails_common.js", "app/assets/javascripts/dtu_rails_common.js"
     end
 
-    def assets
-      copy_file "dtu_bootstrap.css.scss", "app/assets/stylesheets/dtu_bootstrap.css.scss"
-      copy_file "dtu_bootstrap.js", "app/assets/javascripts/dtu_bootstrap.js"
-    end
   end
 end
