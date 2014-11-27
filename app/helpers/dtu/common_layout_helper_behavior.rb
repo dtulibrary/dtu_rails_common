@@ -24,8 +24,8 @@ module Dtu
     # List of classes to be applied to the <body> element
     # @see render_body_class
     # @return [Array<String>]
-    def extra_body_classes
-      @extra_body_classes ||= []
-    end
+    # def extra_body_classes
+    #   []
+    # end
   end
 end
