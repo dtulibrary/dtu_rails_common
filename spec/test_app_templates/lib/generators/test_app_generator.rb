@@ -7,7 +7,14 @@ class TestAppGenerator < Rails::Generators::Base
     system('mv ./lib/generators/app/controllers/* ./app/controllers/')
     system('mv ./lib/generators/config/routes.rb ./config/')
 
-    generate 'dtu_rails_common:install'
+    create_file 'app/assets/stylesheets/application.css.scss' do
+      "@import 'dtu_rails_common';"
+    end
+    remove_file 'app/assets/stylesheets/application.css'
+
+    inject_into_file 'app/assets/javascripts/application.js', :before => /\n\s*\/\/= require_tree/ do
+      "\n//= require 'dtu_rails_common'"
+    end
   end
 
 end

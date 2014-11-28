@@ -17,15 +17,12 @@ module Dtu
     # Render classes for the <body> element
     # @return [String]
     def render_body_class
-      extra_body_classes.join " "
+      if respond_to? :extra_body_classes
+        extra_body_classes.join " "
+      else
+        ""
+      end
     end
 
-    ##
-    # List of classes to be applied to the <body> element
-    # @see render_body_class
-    # @return [Array<String>]
-    # def extra_body_classes
-    #   []
-    # end
   end
 end
