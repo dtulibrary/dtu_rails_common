@@ -1,10 +1,7 @@
 require "dtu_rails_common/engine"
 
-Gem.loaded_specs['dtu_rails_common'].dependencies.each do |d|
-  begin
-    require d.name
-  rescue LoadError
-  end
+Gem.loaded_specs['dtu_rails_common'].runtime_dependencies.each do |d|
+  require d.name
 end
 
 module DtuRailsCommon
