@@ -11,6 +11,38 @@ describe "layouts/dtu" do
     expect(rendered).to match(/meta hello="world"/)
   end
 
+  context 'when in development environment' do
+    before do
+      allow(Rails.env).to receive(:development?).and_return true
+    end
+
+    context 'when config enables dtu font' do
+      before do
+        allow(Rails.application.config).to receive(:dtu_common_layout).and_return(:dtu_font_enabled => true)
+      end
+
+      it 'renders the dtu font link' do
+        expect(rendered).to match(%r{<link href="//fast\.fonts\.com})
+      end
+    end
+
+    context 'when config disables dtu font' do
+      before do
+        allow(Rails.application.config).to receive(:dtu_common_layout).and_return(:dtu_font_enabled => false)
+      end
+
+      it 'does not render the dtu font link' do
+        expect(rendered).to_not match(%r{<link href="//fast\.fonts\.com})
+      end
+    end
+
+    context 'when config does not mention dtu font' do
+      it 'does not render the dtu font link' do
+        expect(rendered).to_not match(%r{<link href="//fast\.fonts\.com})
+      end
+    end
+  end
+
   it "renders content_for :masthead" do
     view.content_for :masthead do
       content_tag :div, 'This is in the masthead', :class => 'masthead'

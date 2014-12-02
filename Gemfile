@@ -16,7 +16,7 @@ group :development, :test do
   gem 'capybara'
 
   gem 'byebug'
-  gem 'engine_cart'
+  gem 'engine_cart', :github => 'dtulibrary/engine_cart'
 end
 
 file = File.expand_path("Gemfile", ENV['ENGINE_CART_DESTINATION'] || ENV['RAILS_ROOT'] || File.expand_path("../spec/internal", __FILE__))

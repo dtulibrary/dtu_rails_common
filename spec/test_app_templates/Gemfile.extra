@@ -1,0 +1,3 @@
+group :assets do
+  gem 'therubyracer'
+end

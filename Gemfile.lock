@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/dtulibrary/engine_cart.git
+  revision: a4304a8504ea63d228736e74d021d84d1f40270f
+  specs:
+    engine_cart (0.4.0)
+      rails
+
 PATH
   remote: .
   specs:
@@ -71,8 +78,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    engine_cart (0.4.0)
-      rails
     erubis (2.7.0)
     execjs (2.2.2)
     hashie (3.3.2)
@@ -190,7 +195,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   dtu_rails_common!
-  engine_cart
+  engine_cart!
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.1.8)
