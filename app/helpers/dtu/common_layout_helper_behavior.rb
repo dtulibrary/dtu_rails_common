@@ -30,7 +30,7 @@ module Dtu
     #  - For development environment it can be enabled through
     #    the Rails configuration by setting
     #
-    #    Rails.application.dtu_common_layout = {
+    #    Rails.application.config.dtu_common_layout = {
     #      :dtu_font_enabled => true
     #    }
     #
