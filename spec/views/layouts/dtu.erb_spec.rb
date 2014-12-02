@@ -18,26 +18,29 @@ describe "layouts/dtu" do
 
     context 'when config enables dtu font' do
       before do
-        allow(Rails.application.config).to receive(:dtu_common_layout).and_return(:dtu_font_enabled => true)
+        Rails.application.config.dtu_common_layout = {:dtu_font_enabled => true}
       end
 
       it 'renders the dtu font link' do
+        render
         expect(rendered).to match(%r{<link href="//fast\.fonts\.com})
       end
     end
 
     context 'when config disables dtu font' do
       before do
-        allow(Rails.application.config).to receive(:dtu_common_layout).and_return(:dtu_font_enabled => false)
+        Rails.application.config.dtu_common_layout = {:dtu_font_enabled => false}
       end
 
       it 'does not render the dtu font link' do
+        render
         expect(rendered).to_not match(%r{<link href="//fast\.fonts\.com})
       end
     end
 
     context 'when config does not mention dtu font' do
       it 'does not render the dtu font link' do
+        render
         expect(rendered).to_not match(%r{<link href="//fast\.fonts\.com})
       end
     end
