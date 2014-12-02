@@ -37,7 +37,7 @@ module Dtu
     # @return [Boolean] true if the DTU font is enabled and false otherwise
 
     def dtu_font_enabled?
-      !Rails.env.development? || (Rails.application.config.try(:dtu_common_layout) && Rails.application.config.dtu_common_layout[:dtu_font_enabled])
+      !Rails.env.development? || Rails.application.config.dtu_font_enabled
     end
 
   end
