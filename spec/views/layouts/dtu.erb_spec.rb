@@ -18,7 +18,7 @@ describe "layouts/dtu" do
 
     context 'when config enables dtu font' do
       before do
-        Rails.application.config.dtu_common_layout = {:dtu_font_enabled => true}
+        Rails.application.config.dtu_font_enabled = true
       end
 
       it 'renders the dtu font link' do
@@ -29,7 +29,7 @@ describe "layouts/dtu" do
 
     context 'when config disables dtu font' do
       before do
-        Rails.application.config.dtu_common_layout = {:dtu_font_enabled => false}
+        Rails.application.config.dtu_font_enabled = false
       end
 
       it 'does not render the dtu font link' do
