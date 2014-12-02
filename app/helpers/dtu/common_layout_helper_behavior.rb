@@ -28,11 +28,13 @@ module Dtu
     # Determine whether or not the DTU font is enabled
     #  - For non-development environments it is always enabled
     #  - For development environment it can be enabled through
-    #    the Rails configuration by setting
+    #    by using an initializer similar to
     #
-    #    Rails.application.config.dtu_common_layout = {
-    #      :dtu_font_enabled => true
-    #    }
+    #    module DtuRailsCommon
+    #      class Engine < Rails::Engine
+    #        config.dtu_font_enabled = Rails.application.config.dtu_font_enabled
+    #      end
+    #    end
     #
     # @return [Boolean] true if the DTU font is enabled and false otherwise
 
