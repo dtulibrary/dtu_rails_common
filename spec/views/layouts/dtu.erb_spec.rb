@@ -1,6 +1,7 @@
 require "spec_helper"
 
 describe "layouts/dtu" do
+
   it "renders content_for :head" do
     view.content_for :head do
       tag :meta, {:hello => 'world'}, true
@@ -44,6 +45,14 @@ describe "layouts/dtu" do
         expect(rendered).to_not match(%r{<link href="//fast\.fonts\.com})
       end
     end
+  end
+
+  it "renders content_for :menu" do
+    view.content_for :menu do
+      content_tag :div, 'This is in the menu', :class => 'menu'
+    end
+    render
+    expect(rendered).to have_css('div.menu', :text => 'This is in the menu')
   end
 
   it "renders content_for :masthead" do

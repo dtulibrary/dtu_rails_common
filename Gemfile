@@ -14,6 +14,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-html-matchers'
   gem 'capybara'
+  gem 'therubyracer'
 
   gem 'byebug'
   gem 'engine_cart', :github => 'dtulibrary/engine_cart'
