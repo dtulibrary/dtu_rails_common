@@ -71,10 +71,14 @@ Example:
 <%= render template: "layouts/dtu" %>
 ```
 
+See
+[Toshokan](https://github.com/dtulibrary/toshokan/blob/bl5-migration/app/views/layouts/application.html.erb)
+for a working example in a blacklight app.
+
 ## Authentication (Unfinished)
 
-The gem provides an omniauth-cas controller that post-authentication queries the
-DTU Library User Database for additional user information such as data from
+The gem provides an omniauth-cas controller that, post-authentication, queries
+the DTU Library User Database for additional user information such as data from
 DTUBasen and the user's roles in relation to other DTU Library applications. To
 take advantage of this authentication functionality the application must to
 provide
