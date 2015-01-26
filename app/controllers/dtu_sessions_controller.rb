@@ -1,5 +1,6 @@
 class DtuSessionsController < DtuApplicationController
-  skip_before_filter :authenticate, :only => [ :setup, :create, :new ]
+  skip_before_action :authenticate,               :only => [ :setup, :create, :new ]
+  skip_before_action :authenticate_conditionally, :only => [ :setup, :create, :new ]
 
   # Called by the user clicking login or by the authorize before_filter
   # (due to forced shunting of dtu users).
@@ -99,16 +100,6 @@ class DtuSessionsController < DtuApplicationController
   def destroy
     destroy_session
     redirect_to logout_url, :notice => t('dtu.auth.logged_out'), :only_path => false
-  end
-
-  def logout_login_as_dtu
-    destroy_session
-    redirect_to logout_login_as_dtu_url
-  end
-
-  def logout_login_as_dtu_url
-    service = {:service => new_user_session_url( :url => params[:url], :only_dtu => true )}
-    "#{Rails.application.config.auth[:cas_url]}/logout?#{service.to_query}"
   end
 
   def omniauth_path(provider, options = {})
