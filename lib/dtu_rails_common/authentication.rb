@@ -1,17 +1,22 @@
 module DtuRailsCommon
   module Authentication
 
+    # Determine whether or not the user should be directed to log in.
+    # The user is directed to log in if:
+    # - He has previously logged in using DTU CAS.
+    # - He has not yet logged in (no shunt cookie) and he is coming from a known DTU IP address
     def authenticate?
       return false if walk_in_request?  
+      (cookies[:shunt] == 'dtu') || (!cookies.has_key?(:shunt) && campus_request?)
     end
 
     # Authenticate users if certain criteria are met.
     # - No authentication will be done if user is already logged in.
-    # - Force authentication if the shunting cookie indicates
+    # - Authenticate if the shunting cookie indicates
     #   that last successful login was via CAS or
     #   if the user originates from a DTU Campus ip address
     # - Otherwise authentication is optional
-    def authenticate
+    def authenticate_conditionally
       # This suppresses the log in suggestion on subsequent
       # request if the user clicks "No"
       if params[:stay_anonymous]
@@ -25,10 +30,18 @@ module DtuRailsCommon
         redirect_to url_for(params.except!(:public))
       end 
 
-      if should_force_authentication
-        force_authentication
+      if authenticate?
+        authenticate
       end 
     end 
 
+    def new_session_path params
+      "/sessions/new/?#{params.to_query}"
+    end
+
+    def authenticate
+      params[:url] = request.url
+      redirect_to new_session_path(params)
+    end
   end
 end

@@ -83,7 +83,8 @@ class DtuSessionsController < DtuApplicationController
 
     begin
       find_and_update_user( identifier )
-    rescue
+    rescue => e
+      logger.error "Error getting/updating user: #{e}"
       redirect_to params[:url] || root_path, :alert => t('dtu.auth.login_failed')
     else
       # Set shunting cookies
