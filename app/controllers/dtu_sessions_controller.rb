@@ -1,3 +1,5 @@
+require 'dtu_rails_common/riyosha'
+
 class DtuSessionsController < DtuApplicationController
   skip_before_action :authenticate,               :only => [ :setup, :create, :new ]
   skip_before_action :authenticate_conditionally, :only => [ :setup, :create, :new ]
@@ -48,42 +50,46 @@ class DtuSessionsController < DtuApplicationController
     render :text => "Omniauth setup phase.", :status => 404
   end
 
-  # Override to create or update user in local storage
-  def create_or_update_user provider, user_data
+  # Override in your session controller to store user in local storage
+  def create_or_update_local_user provider, user_data
     raise 'not implemented'
   end
 
-  # Override to find user by provider and identifier in local storage
-  def find_user_by_provider_and_identifier provider, identifier
+  # Override in your session controller to find user in local storage
+  def find_local_user_by_provider_and_identifier provider, identifier
     raise 'not implemented'
   end
 
   # Finds user in Riyosha and updates local storage.
   # Raises StandardError if user could not be found.
-  def find_and_update_user identifier
+  def find_and_update_user provider, identifier
     user_data = Riyosha.find( identifier )
+    Rails.logger.info "Got user data from Riyosha: #{user_data}"
 
     user = 
       if user_data
-        create_or_update_user( provider, user_data )
+        create_or_update_local_user( provider, user_data )
       else
         logger.warn "Could not get user data from Riyosha."
-        find_user_by_provider_and_identifier( provider, identifier )
+        find_local_user_by_provider_and_identifier( provider, identifier )
       end
 
     raise 'login failed' unless user
     session[:user_id] = user.id
+    user
   end
 
   # Set your omniauth-cas to use this as callback_url
   def create
     # extract authentication data
+    Rails.logger.info 'Create session'
     auth       = request.env["omniauth.auth"]
     provider   = params['provider']
     identifier = auth.uid
+    Rails.logger.info "From omniauth: auth => #{auth}, provider => #{provider}, identifier => #{identifier}"
 
     begin
-      find_and_update_user( identifier )
+      user = find_and_update_user( provider, identifier )
     rescue => e
       logger.error "Error getting/updating user: #{e}"
       redirect_to params[:url] || root_path, :alert => t('dtu.auth.login_failed')

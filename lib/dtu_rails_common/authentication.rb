@@ -37,7 +37,7 @@ module DtuRailsCommon
 
     def authenticate
       params[:url] = request.url
-      redirect_to respond_to?(:new_session_path) ? new_session_path(params) : "/sessions/new?#{params.to_query}"
+      redirect_to respond_to?(:new_session_path) ? new_session_path(params) : "/sessions/new?#{params.to_query}" unless session[:user_id]
     end
   end
 end

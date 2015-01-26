@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth',       '~> 1.2.2'
   s.add_dependency 'omniauth-cas',   '~> 1.1.0'
   s.add_dependency 'netaddr'
+  s.add_dependency 'httparty'
 
   s.add_development_dependency "sqlite3"
 
