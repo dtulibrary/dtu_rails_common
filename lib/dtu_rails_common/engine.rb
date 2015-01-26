@@ -1,3 +1,4 @@
+require 'dtu_rails_common/controllers/helpers'
 require 'dtu_rails_common/controller'
 
 module DtuRailsCommon
