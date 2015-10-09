@@ -24,4 +24,7 @@ class PagesController < ApplicationController
     render "pages/about"
   end
 
+  def terms_of_use
+    render 'pages/terms_of_use'
+  end
 end

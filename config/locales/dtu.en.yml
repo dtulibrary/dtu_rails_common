@@ -20,3 +20,9 @@ en:
         <div class="cvr-number">CVR-no. 30060946</div>
         <div class="ean-number">EAN-no. 5798000430556</div>
     follow_us: Follow us on
+    terms_of_use:
+      title: Terms of Use
+      text:
+        Users must respect the current license terms. Commercial utilization of data,
+        systematic downloading (including entire books or journals) and systematic
+        storing of data is strictly prohibited.
