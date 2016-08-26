@@ -14,15 +14,14 @@
   <div class="navbar-inner level2-navbar">
     <div class="header-gradient">
       <div class="container">
-        <div class="row logos">
-          <div class="col-md-3">
+        <div class="row">
+          <div class="col-md-3 hidden-sm hidden-xs">
             <%= content_for :logo %>
           </div>
-
           <div class="col-md-7">
             <%= content_for :masthead %>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 hidden-sm hidden-xs">
             <%= link_to content_tag('div', '', :class => 'dtu-logo').html_safe, 'http://www.dtu.dk/english', :class => 'logo pull-right' %>
           </div>
         </div>
