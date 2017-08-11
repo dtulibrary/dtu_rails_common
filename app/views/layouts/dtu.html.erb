@@ -19,14 +19,14 @@
     <link href="//fast.fonts.com/cssapi/5cebbbb5-be88-4802-9d8e-4388b2411419.css" media="screen" rel="stylesheet" type="text/css">
   <% end %>
   <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", async: true %>
   <%= csrf_meta_tags %>
 
   <%= yield :head %>
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" async="async"></script>
   <![endif]-->
 
   <%= render :partial => 'shared/javascript_config' %>
