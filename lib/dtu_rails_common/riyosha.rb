@@ -33,7 +33,7 @@ module Riyosha
     else
       JSON.parse(HTTParty.get(Rails.application.config.auth[:api_url] + "/users/#{identifier}.json").body)
     end
-  rescue Exception => e
+  rescue => e
     Rails.logger.error "Error looking up user with identifier #{identifier}: #{e}"
     nil
   end
@@ -45,7 +45,7 @@ module Riyosha
     else
       JSON.parse(HTTParty.get(Rails.application.config.auth[:api_url] + "/create_dtu/#{cwis}.json").body)
     end
-  rescue Exception => e
+  rescue => e
     nil
   end
 
